@@ -1,0 +1,178 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+<center>
+
+</br></br>
+  <h1 class="display-5">About Us</h1></br>
+  <img src="\media\images\Ecenter_K1PD0gw.jpg" />
+  <div class="mid-content" id="background-container"
+    style="background-image: url('Ecenter_K1PD0gw.jpg');margin:0;width:100%;height:100%;background-size: cover;background-repeat: no-repeat; background-attachment:scroll;background-position: 100%; ">
+    
+    
+    <h2 class="About__subTitle">Please Join Center's Telegram to see the Updates.</h2>
+    <div>
+      <div>
+        <p class="Header__socialItem"><a href="http:www.telegram.com" class="Header_socialLink" target="_blank"><i
+              class="fab fa-telegram"></i></a></p>
+      </div>
+      <div>
+        <p class="Header__socialItem"><a href="http:www.facebook.com" class="Header_socialLink" target="_blank"><i
+              class="fab fa-facebook"></i></a></p>
+      </div>
+    </div>
+  
+    <ul style="background-size: cover;background-attachment: fixed;background-position: 0ex;color: rgb(6, 86, 88);">
+      <ol>
+        <h3>
+          <p class="text-start; font-family: Trirong, serif;"><strong>Ershad Center Offers the Following Programs:
+            </strong></p>
+        </h3></br>
+      </br></br>
+      </ol>
+    </br>
+      <ol>
+        <h5>
+          <p class="text-start"><strong>*Dua Komail Program on Thursday evening.</strong></p>
+    
+        </h5>
+      </ol>
+      <ol>
+        <h5>
+          <p class="text-start"><strong>*Jom'a Salat.</strong></p>
+        </h5>
+      </ol>
+      <ol>
+        <h5>
+          <p class="text-start"><strong>*Special programs during Muharram, Fatemieh, and Ramadan.</strong></p>
+        </h5>
+      </ol>
+      <ol>
+        <h5>
+          <p class="text-start"><strong>*Commemoration of Birth of Masoumeen.</strong></p>
+        </h5>
+      </ol>
+      <ol>
+        <h5>
+          <p class="text-start"><strong>*Commemoration of Martyrdom of Masoumeen.</strong></p>
+        </h5>
+      </ol>
+      <ol>
+        <h5>
+          <p class="text-start"><strong>*Celebration of Eids.</p>
+          </h>
+      </ol>
+    </ul>
+
+  </div>
+</br></br>
+
+    <h1 class="display-5">Learn Islam</h1></br>
+    <div
+      style=" background-color:bisque;margin:0;width:100%;height:100%;background-size: csstransforms3d;background-repeat: no-repeat; background-attachment: fixed;background-position: 100%;">
+      <style>
+        li {
+          display: inline;
+          font-family: arial;
+        }
+      </style>
+     
+        <br/><br/>
+      <ul class="menue">
+        <li>
+          <iframe width="360" height="215" src="https://www.youtube.com/embed/ZS6tsURIXxY" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </li>
+        <li>
+          <iframe width="360" height="215" src="https://www.youtube.com/embed/PDxKxnVZtgo" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </li>
+        <li>
+          <iframe width="360" height="215" src="https://www.youtube.com/embed/MWqrIPba8ac" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </li>
+        <iframe width="360" height="215" src="https://www.youtube.com/embed/9snYIesAZuM" title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </ul>
+   
+    </div>
+    <h1 class="display-5">PrayTime</h1></br>
+ <div>
+   
+    <div id="background" style="background-image: url('https://wallpapercave.com/wp/8TElpjz.jpg') ">
+        <br/><br/>
+        <script type="text/javascript" src="http://www.muslimpro.com/muslimprowidget.js?cityid=4164138&convention=Tehran&asrjuristic=Standard" async></script>
+       <br/>
+       <script type="text/javascript" src="http://praytimes.org/code/v2/js/examples/monthly.htm"></script> 
+      </div> 
+    </div>
+    <div>
+      
+    </div>
+
+</div>
+</div>
+</div>
+    </center>
+  </br></br></br>
+
+
+  </div>
+  <h1 id="CALENDAR"> Events For {{ month }} {{ year }}</h1>
+
+  {{ now }}
+  <br /><br />
+  <!--{{ cal|safe }}-->
+
+
+  {% if event_list %}
+  {% for event in event_list %}
+  <div class="card">
+    <div class="card-header">
+      {{ event }}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Where: {{ event.venue }}</h5>
+      <p class="card-text">
+      <ul>
+
+        <li>Date: {{ event.event_date }} </li></br>
+        <li>Days Till Event: {{ event.Days_till }}</li></br>
+        <li>Occured: {{ event.Is_Past }}</li></br>
+        <li>Description: {{ event.description }} </li></br>
+        <!--<li>Manager: {{ event.manager }} </li>
+                  <li>Venue: {{ event.venue }} </li>-->
+
+        </li>
+
+      </ul>
+      </p>
+    </div>
+    {% if user.is_authenticated %}
+    {% if user == event.manager %}
+    <div class="card-footer text-muted">
+
+      <a href="{% url 'update-event' event.id  %}" class="btn btn-outline-secondary btn-sm">Update Event</a>
+      <a href="{% url 'delete-event' event.id  %}" class="btn btn-outline-danger btn-sm">Delete Event</a>
+
+    </div>
+    {% endif %}
+    {% endif %}
+  </div>
+  {% endfor %}
+  {% else %}
+  sorry
+  {% endif %}
+
+  <br /><br />
+</div>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+<h1 class="display-5">Contact Us</h1>
+
+    <center>
+        <Br/><br/>
+        
+        <div class="wp-block-column">
+            <p class="has-text-color has-large-font-size has-very-dark-gray-color"> <h2><strong>Ershad  Center</strong></h2> </p>
+            <hr class="wp-block-separator is-style-wide"/>
+            <p class="has-text-color has-very-dark-gray-color"><strong>6669 SW 59th Pl, <br />Miami, FL 33143</strong></p>
+            <p class="has-text-color has-very-dark-gray-color"><strong>Phone: (305) 970-5202</strong></p>
+            <p class="has-text-color has-very-dark-gray-color"><strong>Email: </strong> <a href="mailto:info@ershadcenter.org">info@ershadcenter.org</a></p>
+            
+        </div>
+           
+          
+        
+        <h4>Pleas Enter Your Message Here</h4>
+        <br/><br/>
+        {% if submitted %} 
+            Your Message Was Submitted Succesfully!!
+        {% else %}
+        <section class="Contact" id="contact">
+           
+        <form action=""method="POST" class="Contact__form">
+            
+              {% csrf_token %} 
+              {{ form.as_p }}
+    
+              <input type= "submit" value="submit" class="btn btn-secondary">
+            </div>
+            
+        </form>
+    </div>
+</section>
+        {% endif %}
+    </center>
+
+ {% endblock %}   
