@@ -116,7 +116,7 @@ DATABASES['default'].update(db_from_env)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_ROOT = '/media/'
+MEDIA_URL = '/media/'
 
 STATICFILES_STORAGE= 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
