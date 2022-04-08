@@ -133,44 +133,7 @@
   <!--{{ cal|safe }}-->
 
 
-  {% if event_list %}
-  {% for event in event_list %}
-  <div class="card">
-    <div class="card-header">
-      {{ event }}
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">Where: {{ event.venue }}</h5>
-      <p class="card-text">
-      <ul>
-
-        <li>Date: {{ event.event_date }} </li></br>
-        <li>Days Till Event: {{ event.Days_till }}</li></br>
-        <li>Occured: {{ event.Is_Past }}</li></br>
-        <li>Description: {{ event.description }} </li></br>
-        <!--<li>Manager: {{ event.manager }} </li>
-                  <li>Venue: {{ event.venue }} </li>-->
-
-        </li>
-
-      </ul>
-      </p>
-    </div>
-    {% if user.is_authenticated %}
-    {% if user == event.manager %}
-    <div class="card-footer text-muted">
-
-      <a href="{% url 'update-event' event.id  %}" class="btn btn-outline-secondary btn-sm">Update Event</a>
-      <a href="{% url 'delete-event' event.id  %}" class="btn btn-outline-danger btn-sm">Delete Event</a>
-
-    </div>
-    {% endif %}
-    {% endif %}
-  </div>
-  {% endfor %}
-  {% else %}
-  sorry
-  {% endif %}
+ 
 
   <br /><br />
 </div>
